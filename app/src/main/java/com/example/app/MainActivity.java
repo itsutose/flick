@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.InputDevice;
 import android.view.MotionEvent;
 import android.view.View;
@@ -25,9 +26,11 @@ public class MainActivity extends Activity implements View.OnTouchListener, View
 //    }
 
     private TextView m_LogText;
+    private TextView m_IndText;
     private ImageView pink;
     private ImageView orange;
     private ImageView kb;
+    private boolean Insele=false;
 
     private final FlickListener.Listener flickListener = new FlickListener.Listener() {
         @Override
@@ -86,6 +89,7 @@ public class MainActivity extends Activity implements View.OnTouchListener, View
 
         // テキストビューの取得
         m_LogText = (TextView)this.findViewById(R.id.log_text);
+        m_IndText = (TextView)this.findViewById(R.id.ind_text);
 
         pink = findViewById(R.id.pink);
         orange = findViewById(R.id.orange);
@@ -100,8 +104,6 @@ public class MainActivity extends Activity implements View.OnTouchListener, View
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         String log = "";
-
-
 
         // 種別の取得
         int type = event.getToolType(0);
@@ -121,13 +123,10 @@ public class MainActivity extends Activity implements View.OnTouchListener, View
         log += "X : " + x + "\n";
         log += "Y : " + y + "\n";
 
-        sons(x,y,kb);
-
         // 筆圧取得
         float pressure = event.getPressure();
         log += "Pressure : " + pressure + "\n";
         m_LogText.setText(log);
-
 
         // その場所にポインタを表示
         orange.setX(x-20);
@@ -139,21 +138,76 @@ public class MainActivity extends Activity implements View.OnTouchListener, View
             orange.setVisibility(View.VISIBLE);
         }
 
+        // 押されている場所の位置を取得(離されるまで帰ってこない)
+        locas(x, y, kb,event);
+
         return true;
     }
 
-    private int sons(float x,float y,ImageView kb){
-        int son=0;
+    private void locas(float x,float y,ImageView kb,MotionEvent event){
+        char son;
         x+=1;
         y+=1;
+        // 押されている場所のキーの座標取得する
+        int xind=0,yind=0;
+        // キーボードの中の位置
+        int[] location = new int[2];
+        kb.getLocationOnScreen(location);
+        // キーボードのサイズ
         int xsize = kb.getWidth();
         int ysize = kb.getHeight();
+        // キーボード内で正規化されたタッチ位置の座標
+        float xloc = x-location[0];
+        float yloc = y-location[1]+85;
 
-        int a = (int) (xsize/x);
-        int b = (int) (ysize/y);
+        for(int i=1;i<6;i++){
+            if(xloc <= i*xsize/5){
+                xind = i;
+                break;
+            }
+        }
 
-        return son;
+        for(int i=1;i<5;i++){
+            if(yloc <= i*ysize/4){
+                yind = i;
+                break;
+            }
+        }
+
+        tkch(xind,yind);
+
+        String log = "";
+
+        // タッチ座標の取得
+        log += "X : " + xind + "\n";
+        log += "Y : " + yind + "\n";
+
+        // 筆圧取得
+        m_IndText.setText(log);
+
+//        while(event.getPressure()==1){
+//
+//            // タッチ座標の取得
+//            float xx = event.getX();
+//            float yy = event.getY();
+//            log += "X : " + x + "\n";
+//            log += "Y : " + y + "\n";
+//            locas(xx, yy, kb,event);
+//            m_LogText.setText(log);
+//        }
     }
+
+    private char tkch(int x,int y){
+        char moji='n';
+        Insele = true;
+
+        if(moji!='n'){
+            Insele = false;
+        }
+        return moji;
+    }
+
+
 
 
     public boolean onHover(View v, MotionEvent event) {

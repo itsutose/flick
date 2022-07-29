@@ -14,7 +14,7 @@
     <TextView
         android:id="@+id/log_text"
         android:layout_width="168dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
         android:text="Score : 300"
@@ -26,40 +26,49 @@
         android:layout_centerInParent="true"
         android:text="中央寄せ" />
 
+    <!--    <Button-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_alignParentBottom="true"-->
+    <!--        android:layout_centerHorizontal="true"-->
+    <!--        android:text="中央下" />-->
+
+    <!--    <Button-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_alignParentLeft="true"-->
+    <!--        android:layout_centerVertical="true"-->
+    <!--        android:stateListAnimator="@null"-->
+    <!--        android:text="中央左" />-->
+
+    <!--    <Button-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_alignParentRight="true"-->
+    <!--        android:layout_centerVertical="true"-->
+    <!--        android:stateListAnimator="@null"-->
+    <!--        android:text="中央右" />-->
+
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="127dp"
+        android:layout_height="172dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:text="中央上" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="中央下" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:stateListAnimator="@null"
-        android:text="中央左" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:stateListAnimator="@null"
-        android:text="中央右" />
+    <TextView
+        android:id="@+id/ind_text"
+        android:layout_width="168dp"
+        android:layout_height="93dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:text="Score : 100"
+        android:textSize="18sp" />
 
     <ImageView
         android:id="@+id/kb"
-        android:layout_width="wrap_content"
-        android:layout_height="194dp"
+        android:layout_width="352dp"
+        android:layout_height="185sp"
         android:src="@drawable/kb"
         android:stateListAnimator="@null" />
 
@@ -76,22 +85,22 @@
         android:src="@drawable/orange" />
 
     <!--    <EditText-->
-<!--        android:id="@+id/phone"-->
-<!--        android:layout_width="fill_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:inputType="phone" />-->
-<!--    <ListView-->
-<!--        android:id="@+id/listview"-->
-<!--        android:layout_width="253dp"-->
-<!--        android:layout_height="253dp"-->
+    <!--        android:id="@+id/phone"-->
+    <!--        android:layout_width="fill_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:inputType="phone" />-->
+    <!--    <ListView-->
+    <!--        android:id="@+id/listview"-->
+    <!--        android:layout_width="253dp"-->
+    <!--        android:layout_height="253dp"-->
 
-<!--        />-->
+    <!--        />-->
 
-    <FrameLayout
-        android:layout_width="264dp"
-        android:layout_height="102dp">
+    <!--    <FrameLayout-->
+    <!--        android:layout_width="264dp"-->
+    <!--        android:layout_height="102dp">-->
 
-    </FrameLayout>
+    <!--    </FrameLayout>-->
 
 
 </LinearLayout>
